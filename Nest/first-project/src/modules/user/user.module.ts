@@ -4,12 +4,16 @@ import { UserController } from './user.controller';
 
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema } from './schemas/user.schema';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://felipeferreiradev:admin123@apisnode.lbn3zxt.mongodb.net/?retryWrites=true&w=majority',
-    ),
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+    }),
+    MongooseModule.forRoot(`mongodb+srv://${process.env.DATABASE_URL}`, {
+      dbName: 'Primeiro_Projeto',
+    }),
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
   ],
   providers: [UserService],

@@ -6,6 +6,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from './schemas/user.schema';
 
+import { hash } from 'bcryptjs';
+
 @Injectable()
 export class UserService {
   constructor(
@@ -13,9 +15,19 @@ export class UserService {
     private readonly userSchema: Model<User>,
   ) {}
   async create(createUserDto: CreateUserDto) {
-    const user = await new this.userSchema(createUserDto).save();
+    const { name, email, password } = createUserDto;
 
-    return user.id;
+    const passwordHash = await hash(password, 8);
+
+    const user = {
+      name,
+      email,
+      password: passwordHash,
+    };
+
+    const userReturn = await new this.userSchema(user).save();
+
+    return userReturn;
   }
 
   findAll() {
