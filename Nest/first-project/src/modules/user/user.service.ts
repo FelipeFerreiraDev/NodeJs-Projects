@@ -30,8 +30,8 @@ export class UserService {
     return userReturn;
   }
 
-  findAll() {
-    return `This action returns all user`;
+  async findAll() {
+    return this.userSchema.find().exec();
   }
 
   findOne(id: number) {
