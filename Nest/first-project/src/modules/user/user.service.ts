@@ -34,11 +34,11 @@ export class UserService {
     return this.userSchema.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findId(id: string) {
+    return this.userSchema.findById(id).exec();
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  update(id: string, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }
 
