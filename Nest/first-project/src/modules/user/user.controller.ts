@@ -11,6 +11,11 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
+interface authProps {
+  email: string;
+  password: string;
+}
+
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -38,5 +43,10 @@ export class UserController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.userService.remove(id);
+  }
+
+  @Post('/sessions')
+  login(@Body() auth: authProps) {
+    return this.userService.login(auth.email, auth.password);
   }
 }
