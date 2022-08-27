@@ -38,8 +38,12 @@ export class UserService {
     return this.userSchema.findById(id).exec();
   }
 
-  update(id: string, updateUserDto: UpdateUserDto) {
+  async update(id: string, updateUserDto: UpdateUserDto) {
     /* update user*/
+    if (updateUserDto.password) {
+      updateUserDto.password = await hash(updateUserDto.password, 8);
+    }
+
     return this.userSchema.updateOne({ _id: id }, { $set: updateUserDto });
   }
 
