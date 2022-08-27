@@ -39,10 +39,11 @@ export class UserService {
   }
 
   update(id: string, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+    /* update user*/
+    return this.userSchema.updateOne({ _id: id }, { $set: updateUserDto });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  remove(id: string) {
+    return this.userSchema.deleteOne({ _id: id }).exec();
   }
 }
