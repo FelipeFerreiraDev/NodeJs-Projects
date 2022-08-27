@@ -1,73 +1,76 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Inspirado no challenge da empresa Goomer:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+![alt text](https://github.com/goomerdev/job-dev-backend-interview/raw/master/media/logo-azul.png "Goomer")
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Challenge - Developer Backend
 
-## Description
+Você provavelmente já está participando do nosso processo seletivo, mas se você caiu aqui por acaso, leia esse documento até o final e se você se interessar, pode começar o processo à partir daqui =]
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Não é esperado que todas as pessoas consigam realizar esse desafio por completo, já que é destinado a todos os níveis de carreira.
 
-## Installation
+A avaliação será baseada na sua capacidade de escrever um código simples, de fácil manutenção, e pela quantidade de funcionalidades que você entregar.
 
-```bash
-$ npm install
-```
+### Instruções
 
-## Running the app
+- **Nome do Projeto:** Goomer Lista Rango
+- **Objetivo do Projeto:** Criar uma API RESTful capaz de gerenciar os restaurantes e os produtos do seu cardápio.
+- **Tecnologia:** Node.js com banco de dados relacional.
+- **Entregáveis:** Crie um repositório pessoal para esse projeto, siga as instruções abaixo e responda e-mail recebido com link do repositório. Caso você resolveu fazer o teste por conta própria pode enviar para selecao.tech@goomer.com.br.
 
-```bash
-# development
-$ npm run start
+### Desafio
 
-# watch mode
-$ npm run start:dev
+- A sua API deverá ser capaz de:
+    - Listar todos os restaurantes
+    - Cadastrar novos restaurantes
+    - Listar os dados de um restaurante
+    - Alterar os dados um restaurante
+    - Excluir um restaurante
+    - Listar todos os produtos de um restautante
+    - Criar um produto de um restaurante
+    - Alterar um produto de um restaurante
+    - Excluir um produto de um restaurante
 
-# production mode
-$ npm run start:prod
-```
+- O cadastro do restaurante precisa ter os seguintes campos:
+    - Foto do restaurante
+    - Nome do restaurante
+    - Endereço do restaurante
+    - Horários de funcionamento do restaurante (ex.: De Segunda à Sexta das 09h as 18h e de Sabado à Domingo das 11h as 20h).
+    
+- O cadastro de produtos do restaurante precisa ter os seguintes campos:
+    - Foto do produto
+    - Nome do produto
+    - Preço do produto
+    - Categoria do produto (ex.: Doce, Salgados, Sucos...)
+    - Quando o Produto for colocado em promoção, precisa ter os seguintes campos:
+        - Descrição para a promoção do produto (ex.: Chopp pela metade do preço)
+        - Preço promocional
+        - Dias da semana e o horário em que o produto deve estar em promoção
 
-## Test
+##### Formato de horários
+- É necessário tratar os campos que indicam horários de funcionamento e horário para as promoções dos produtos. 
+- Os campos devem possuir o formato `HH:mm`. 
+- Os horários devem possuir intervalo mínimo de 15 minutos.
 
-```bash
-# unit tests
-$ npm run test
+### O que nós vamos avaliar
 
-# e2e tests
-$ npm run test:e2e
+- Vamos avaliar a qualidade do código, legibilidade e a quantidade de funcionalidades implementadas.
+- Você é livre para tomar as decisões técnicas com as quais você se sente mais confortável. Apenas esteja pronto(a) para explicar as razões que fundamentaram suas escolhas =]
+- Inclua um arquivo *README* que possua:
+  - desafios/problemas com os quais você se deparou durante a execução do projeto.
+  - maneiras através das quais você pode melhorar a aplicação, seja em performance, estrutura ou padrões. 
+  - todas as intruções necessárias para que qualquer pessoa consiga rodar sua aplicação sem maiores problemas.
 
-# test coverage
-$ npm run test:cov
-```
+### Dicas
 
-## Support
+- Documente seu projeto em arquivos markdown explicando a estrutura, processo de setup e requisitos.
+- Tenha sempre um mindset de usabilidade, escalabilidade e colaboração.
+- A organização das branches e os commits no repositório falam muito sobre como você organiza seu trabalho.
+- Os testes unitários são mais do que desejados.
+- O design/estrutura do código da aplicação deve ser *production ready*.
+- Tenha em mente os conceitos de *SOLID, KISS, YAGNI e DRY*.
+- Use boas práticas de programação.
+- Considere que não sabemos nada sobre os seus conhecimentos, então quanto mais você mostrar e o quão mais descritiva for sua documentação, melhor =]
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Happy coding 
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+![alt text](https://github.com/goomerdev/job-dev-backend-interview/raw/master/media/may-the-force-be-with-you.jpg "Happy Coding!!!")
