@@ -37,8 +37,6 @@
 | :---: |  
 
 ---
-Códigos desenvolvidos usando a documentação das ferramentas
----
 Obrigado por me ceder seu tempo lendo sobre os meus trabalhos.
 
 Qualquer dúvida, crítica ou sugestão entre em <a href="mailto:felipeferreira.sp.dev@gmail.com/">contato</a> pelo meu e-mail
