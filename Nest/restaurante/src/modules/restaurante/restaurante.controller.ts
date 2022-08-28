@@ -27,7 +27,7 @@ export class RestauranteController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.restauranteService.findOne(+id);
+    return this.restauranteService.findOne(id);
   }
 
   @Patch(':id')

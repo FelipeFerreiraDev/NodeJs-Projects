@@ -24,12 +24,12 @@ export class RestauranteService {
     return user;
   }
 
-  findAll() {
-    return `This action returns all restaurante`;
+  async findAll() {
+    return await this.restaurantesRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} restaurante`;
+  async findOne(id: string) {
+    return await this.restaurantesRepository.find({ where: { id: id } });
   }
 
   update(id: number, updateRestauranteDto: UpdateRestauranteDto) {
