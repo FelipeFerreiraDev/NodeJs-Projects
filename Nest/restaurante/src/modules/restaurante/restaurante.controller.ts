@@ -40,6 +40,6 @@ export class RestauranteController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.restauranteService.remove(+id);
+    return this.restauranteService.remove(id);
   }
 }

@@ -36,7 +36,13 @@ export class RestauranteService {
     return `This action updates a #${id} restaurante`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} restaurante`;
+  async remove(id: string) {
+    const response = await this.restaurantesRepository.delete(id);
+
+    if (!response) {
+      throw new Error('Restaurante não encontrado');
+    }
+
+    return `Restaurante Deletado`;
   }
 }
