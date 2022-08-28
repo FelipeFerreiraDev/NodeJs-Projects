@@ -6,4 +6,6 @@ export class CreateRestauranteDto {
   endereco: string;
 
   horario: string;
+
+  password: string;
 }

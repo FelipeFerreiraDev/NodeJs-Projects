@@ -1,15 +1,19 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity('restaurante')
 export class Restaurante {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   name: string;
 
-  @Column()
+  @Column({ nullable: false })
   endereco: string;
 
-  @Column()
+  @Column({ nullable: false })
   horario: string;
+
+  @Column({ nullable: false })
+  password: string;
 }
