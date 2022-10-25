@@ -9,3 +9,25 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Restaurant {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  password  String
+  address   String?
+  operation String?
+  Product   Product[]
+}
+
+model Product {
+  id               Int        @id @default(autoincrement())
+  title            String
+  price            Float
+  category         String
+  content          String?
+  promotionalPrice Float?
+  date             DateTime?
+  restaurant       Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId     String
+}
