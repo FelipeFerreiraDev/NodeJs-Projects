@@ -31,6 +31,10 @@ export class RestaurantService {
     });
   }
 
+  async restaurantsList(): Promise<Restaurant[]> {
+    return this.prisma.restaurant.findMany();
+  }
+
   async createRestaurant(
     data: Prisma.RestaurantCreateInput,
   ): Promise<Restaurant> {
