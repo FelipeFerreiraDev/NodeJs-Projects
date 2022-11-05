@@ -1,38 +1,49 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
-import { Restaurant, Prisma } from '@prisma/client';
+import { Restaurant, Prisma, Product } from '@prisma/client';
 
+export interface RestaurantProductProps {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  address: string | null;
+  operation: string | null;
+  products: Product[];
+}
 @Injectable()
 export class RestaurantService {
   constructor(private prisma: PrismaService) {}
 
   async restaurant(
     restaurantWhereUniqueInput: Prisma.RestaurantWhereUniqueInput,
-  ): Promise<Restaurant | null> {
+  ): Promise<RestaurantProductProps | null> {
     return this.prisma.restaurant.findUnique({
       where: restaurantWhereUniqueInput,
+      include: {
+        products: true,
+      },
     });
   }
 
-  async restaurants(params: {
-    skip?: number;
-    take?: number;
-    cursor?: Prisma.RestaurantWhereUniqueInput;
-    where?: Prisma.RestaurantWhereInput;
-    orderBy?: Prisma.RestaurantOrderByWithRelationInput;
-  }): Promise<Restaurant[]> {
-    const { skip, take, cursor, where, orderBy } = params;
+  async restaurants(params: { id: string }): Promise<RestaurantProductProps> {
+    const { id } = params;
+    return this.prisma.restaurant.findUnique({
+      where: {
+        id: id,
+      },
+      include: {
+        products: true,
+      },
+    });
+  }
+
+  async restaurantsList(): Promise<RestaurantProductProps[]> {
     return this.prisma.restaurant.findMany({
-      skip,
-      take,
-      cursor,
-      where,
-      orderBy,
+      include: {
+        products: true,
+      },
     });
-  }
-
-  async restaurantsList(): Promise<Restaurant[]> {
-    return this.prisma.restaurant.findMany();
   }
 
   async createRestaurant(
@@ -57,6 +68,15 @@ export class RestaurantService {
   async deleteRestaurant(
     where: Prisma.RestaurantWhereUniqueInput,
   ): Promise<Restaurant> {
+    await this.prisma.restaurant.update({
+      where,
+      data: {
+        products: {
+          deleteMany: {},
+        },
+      },
+    });
+
     return this.prisma.restaurant.delete({
       where,
     });

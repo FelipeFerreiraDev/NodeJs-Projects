@@ -10,6 +10,14 @@ import {
 import { Restaurant } from '@prisma/client';
 import { RestaurantService } from 'src/services/prisma/restaurant.service';
 
+interface RestaurantUpdateProps {
+  name?: string;
+  email?: string;
+  password?: string;
+  address?: string | null;
+  operation?: string | null;
+}
+
 @Controller('restaurant')
 export class RestaurantController {
   constructor(private readonly restaurantService: RestaurantService) {}
@@ -30,7 +38,10 @@ export class RestaurantController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRestaurantDto: Restaurant) {
+  update(
+    @Param('id') id: string,
+    @Body() updateRestaurantDto: RestaurantUpdateProps,
+  ) {
     return this.restaurantService.updateRestaurant({
       where: { id: id },
       data: updateRestaurantDto,
