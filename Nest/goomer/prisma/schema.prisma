@@ -17,7 +17,7 @@ model Restaurant {
   password  String
   address   String?
   operation String?
-  Product   Product[]
+  products   Product[]
 }
 
 model Product {
