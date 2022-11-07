@@ -18,6 +18,7 @@ CREATE TABLE "Product" (
     "content" TEXT,
     "promotionalPrice" REAL,
     "date" DATETIME,
+    "image" TEXT,
     "restaurantId" TEXT NOT NULL,
     CONSTRAINT "Product_restaurantId_fkey" FOREIGN KEY ("restaurantId") REFERENCES "Restaurant" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );

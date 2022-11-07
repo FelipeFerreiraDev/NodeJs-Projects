@@ -6,8 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { Product } from '@prisma/client';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
 import { ProductService } from 'src/services/prisma/product.service';
 
 @Controller('product')
@@ -52,9 +57,32 @@ export class ProductController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: number, @Body() updateProductDto: Product) {
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './tmp/product',
+        filename: (req, file, callback) => {
+          const uniqueSuffix =
+            Date.now() + '-' + Math.round(Math.random() * 1e9);
+
+          const ext = extname(file.originalname);
+
+          const filename = `${ext}-${uniqueSuffix}-${ext}`;
+
+          callback(null, filename);
+        },
+      }),
+    }),
+  )
+  update(
+    @Param('id') id: number,
+    @Body() updateProductDto: Product,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    updateProductDto.image = file.path;
+
     return this.productService.updateProduct({
-      where: { id },
+      where: { id: +id },
       data: updateProductDto,
     });
   }
