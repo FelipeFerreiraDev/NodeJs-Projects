@@ -5,7 +5,8 @@ CREATE TABLE "Restaurant" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "address" TEXT,
-    "operation" TEXT
+    "operation" TEXT,
+    "logo" TEXT
 );
 
 -- CreateTable
